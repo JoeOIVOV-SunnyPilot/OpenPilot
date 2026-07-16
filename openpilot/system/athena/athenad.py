@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import base64
 import hashlib
+import io
 import itertools
 import json
 import os
@@ -10,6 +12,7 @@ import random
 import select
 import socket
 import sys
+import tempfile
 import threading
 import time
 import gzip
@@ -38,7 +41,7 @@ from openpilot.system.loggerd.xattr_cache import getxattr, setxattr
 from openpilot.common.swaglog import cloudlog
 from openpilot.common.version import get_build_metadata
 from openpilot.common.hardware.hw import Paths
-from openpilot.system.athena.rpc import dispatcher, dumps_call, handle, is_call, is_response, loads
+from openpilot.system.athena.rpc import dispatcher, handle, is_call, is_response, loads
 
 
 ATHENA_HOST = os.getenv('ATHENA_HOST', 'wss://athena.comma.ai')
