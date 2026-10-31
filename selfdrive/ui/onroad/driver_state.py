@@ -81,7 +81,9 @@ class DriverStateRenderer(Widget):
     self.set_visible(lambda: (ui_state.sm["selfdriveState"].alertSize == AlertSize.none and
                               ui_state.sm.recv_frame["driverStateV2"] > ui_state.started_frame))
 
-  def _render(self, rect):
+def _render(self, rect):
+    return  # <--- Add this line here to completely hide the face icon and mesh lines
+  
     # Set opacity based on active state
     opacity = 0.65 if self.is_active else 0.2
 
